@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/chooseadventure
+    username: chooseadventure
+    password: TESTtest1
+  redis:
+    port: 6379
+    host: localhost
+  data:
+    redis:
+      repositories:
+        enabled: true
+
+server:
+  port: 11443
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: src/main/resources/config/muhAppKeystore.p12
+    key-store-password: changeit
+    keyAlias: muhApp
+    protocol: TLS
+    ciphers: >
+      TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
+      TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
+      TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,
+      TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,
+      TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,
+      TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,
+      TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+      TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+      TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,
+      TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+      TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,
+      TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,
+      TLS_DHE_RSA_WITH_AES_128_GCM_SHA256,
+      TLS_DHE_RSA_WITH_AES_256_GCM_SHA384,
+      TLS_DHE_RSA_WITH_AES_128_CBC_SHA,
+      TLS_DHE_RSA_WITH_AES_256_CBC_SHA,
+      TLS_DHE_RSA_WITH_AES_128_CBC_SHA256,
+      TLS_DHE_RSA_WITH_AES_256_CBC_SHA256,
+
+
+newproject:
+  host: chooseadventure.dc.local
+  allowed-origins: >
+    http://localhost:11443,
+    http://dchristensen-mb2.veracode.local:3000,
+    http://chooseadventure.dc.local:3000
