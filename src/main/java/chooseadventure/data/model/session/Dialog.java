@@ -1,4 +1,4 @@
-package chooseadventure.data.models.session;
+package chooseadventure.data.model.session;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

@@ -1,4 +1,4 @@
-package chooseadventure.data.repositories.impl;
+package chooseadventure.data.repository.impl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -1,6 +1,6 @@
-package chooseadventure.data.repositories;
+package chooseadventure.data.repository;
 
-import chooseadventure.data.entities.Room;
+import chooseadventure.data.entity.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,7 +1,7 @@
 package chooseadventure.services;
 
 
-import chooseadventure.data.models.session.Session;
+import chooseadventure.data.model.session.Session;
 
 public interface ActionService {
 

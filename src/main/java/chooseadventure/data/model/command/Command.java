@@ -1,4 +1,4 @@
-package chooseadventure.data.models.command;
+package chooseadventure.data.model.command;
 
 public class Command {
     private Action action;

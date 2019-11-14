@@ -1,7 +1,7 @@
 package chooseadventure.security.filters;
 
-import chooseadventure.data.models.session.Session;
-import chooseadventure.data.repositories.RedisSessionRepository;
+import chooseadventure.data.model.session.Session;
+import chooseadventure.data.repository.RedisSessionRepository;
 import chooseadventure.security.SessionAuthentication;
 import chooseadventure.utils.RequestUtils;
 import org.slf4j.Logger;
@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class SessionFilter implements Filter {
@@ -41,12 +42,12 @@ public class SessionFilter implements Filter {
         Optional<Cookie> sessionCookie = RequestUtils.getSessionCookie(request);
 
         sessionCookie.ifPresentOrElse(c -> {
-;            Session session = redisSessionRepository.getSession(c);
+            Session session = redisSessionRepository.getSession(c);
             SecurityContextHolder.getContext().setAuthentication(new SessionAuthentication(c.getValue(), session));
             c.setMaxAge(-1);
             response.addCookie(c);
         }, () -> {
-            Cookie newCookie = new Cookie(RequestUtils.SESSION_COOKIE, redisSessionRepository.createSession());
+            Cookie newCookie = new Cookie(RequestUtils.SESSION_COOKIE, UUID.randomUUID().toString());
             SecurityContextHolder.getContext().setAuthentication(new SessionAuthentication(newCookie.getValue(), new Session()));
             newCookie.setMaxAge(-1);
             response.addCookie(newCookie);

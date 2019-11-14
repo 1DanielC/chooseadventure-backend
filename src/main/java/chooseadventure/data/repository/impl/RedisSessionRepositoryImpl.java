@@ -1,7 +1,7 @@
-package chooseadventure.data.repositories.impl;
+package chooseadventure.data.repository.impl;
 
-import chooseadventure.data.models.session.Session;
-import chooseadventure.data.repositories.RedisSessionRepository;
+import chooseadventure.data.model.session.Session;
+import chooseadventure.data.repository.RedisSessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.lang.Nullable;
@@ -24,13 +24,6 @@ public class RedisSessionRepositoryImpl implements RedisSessionRepository {
         this.redisTemplate = redisTemplate;
     }
 
-    @Override
-    @Nullable
-    public String createSession() {
-        String token = UUID.randomUUID().toString();
-        redisTemplate.opsForValue().set(token, new Session(), TIMEOUT, INTERVAL);
-        return token;
-    }
 
     @Override
     public void updateSession(String token, Session session) {

@@ -1,6 +1,6 @@
 package chooseadventure.config;
 
-import chooseadventure.data.models.session.Session;
+import chooseadventure.data.model.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

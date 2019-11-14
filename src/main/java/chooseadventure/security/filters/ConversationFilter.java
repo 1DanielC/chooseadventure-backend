@@ -1,5 +1,7 @@
 package chooseadventure.security.filters;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +18,8 @@ import java.util.UUID;
 @Component
 public class ConversationFilter implements Filter {
 
+    private static final Logger LOG = LoggerFactory.getLogger(ConversationFilter.class);
+
     private static final String CONVERSATION_HEADER = "CONVERSATION";
 
     @Autowired
@@ -29,7 +33,9 @@ public class ConversationFilter implements Filter {
 
         filterChain.doFilter(request, response);
 
-        response.setHeader(CONVERSATION_HEADER, UUID.randomUUID().toString());
+        String conversation = UUID.randomUUID().toString();
+        response.setHeader(CONVERSATION_HEADER, conversation );
+        LOG.info("Handled requests {}: {}", conversation, response.getStatus() );
     }
 
 }

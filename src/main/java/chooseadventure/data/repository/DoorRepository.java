@@ -1,7 +1,7 @@
-package chooseadventure.data.repositories.impl;
+package chooseadventure.data.repository;
 
-import chooseadventure.data.entities.Door;
-import chooseadventure.data.entities.Room;
+import chooseadventure.data.entity.Door;
+import chooseadventure.data.entity.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,5 +13,5 @@ import java.util.Optional;
 public interface DoorRepository extends JpaRepository<Room, Integer> {
 
     @Query("SELECT d FROM Door d where d.room_id = :id")
-    public Optional<Door> getDoorByRoomId(@Param("room_id") long room_id);
+    Optional<Door> getDoorByRoomId(@Param("id") long room_id);
 }

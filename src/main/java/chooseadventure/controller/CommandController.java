@@ -1,8 +1,8 @@
-package chooseadventure.controllers;
+package chooseadventure.controller;
 
-import chooseadventure.data.models.command.Command;
-import chooseadventure.data.models.session.Session;
-import chooseadventure.data.repositories.RedisSessionRepository;
+import chooseadventure.data.model.command.Command;
+import chooseadventure.data.model.session.Session;
+import chooseadventure.data.repository.RedisSessionRepository;
 import chooseadventure.security.SessionAuthentication;
 import chooseadventure.services.CommandService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,7 @@ public class CommandController {
         Session nextSession = commandService.executeCommand(session, command);
         redisSessionRepository.updateSession(sessionAuth.getSessionToken(), nextSession);
 
-        return ResponseEntity.ok(nextSession);
+        return ResponseEntity.ok(nextSession.toResource());
     }
 
     @RequestMapping(value = {"/getcommand"}, method = RequestMethod.GET)

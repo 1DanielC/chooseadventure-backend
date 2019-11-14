@@ -1,9 +1,9 @@
 package chooseadventure.services;
 
 
-import chooseadventure.data.models.command.Action;
-import chooseadventure.data.models.command.Command;
-import chooseadventure.data.models.session.Session;
+import chooseadventure.data.model.command.Action;
+import chooseadventure.data.model.command.Command;
+import chooseadventure.data.model.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

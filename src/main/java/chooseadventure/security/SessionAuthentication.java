@@ -1,6 +1,6 @@
 package chooseadventure.security;
 
-import chooseadventure.data.models.session.Session;
+import chooseadventure.data.model.session.Session;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.AuthorityUtils;
 
