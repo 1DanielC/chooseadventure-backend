@@ -1,6 +1,4 @@
-package chooseadventure.data.entity;
-
-import chooseadventure.data.model.command.Direction;
+package chooseadventure.data.model.command;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -16,10 +16,20 @@ public class CommandService {
 
     @Autowired
     public CommandService(
-            GoService goService
+            GoService goService,
+            ExamineService examineService,
+            TakeService takeService,
+            DropService dropService,
+            InspectService inspectService,
+            TeleportService teleportService
     ) {
         actionMap = new HashMap<>();
         actionMap.put(Action.GO, goService);
+        actionMap.put(Action.EXAMINE, examineService);
+        actionMap.put(Action.TAKE, takeService);
+        actionMap.put(Action.DROP, dropService);
+        actionMap.put(Action.INSPECT, inspectService);
+        actionMap.put(Action.TELEPORT, teleportService);
     }
 
     public CommandService() {

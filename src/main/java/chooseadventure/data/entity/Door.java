@@ -1,5 +1,6 @@
 package chooseadventure.data.entity;
 
+import chooseadventure.data.model.command.CardinalDirection;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.Column;

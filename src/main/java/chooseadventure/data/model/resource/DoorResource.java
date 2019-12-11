@@ -1,6 +1,6 @@
 package chooseadventure.data.model.resource;
 
-import chooseadventure.data.entity.CardinalDirection;
+import chooseadventure.data.model.command.CardinalDirection;
 import chooseadventure.data.entity.Door;
 import chooseadventure.data.model.command.Direction;
 

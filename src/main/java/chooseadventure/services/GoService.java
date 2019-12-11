@@ -1,6 +1,6 @@
 package chooseadventure.services;
 
-import chooseadventure.data.entity.CardinalDirection;
+import chooseadventure.data.model.command.CardinalDirection;
 import chooseadventure.data.entity.Room;
 import chooseadventure.data.model.command.Direction;
 import chooseadventure.data.model.session.Session;
@@ -17,13 +17,11 @@ public class GoService implements ActionService {
     private RoomRepository roomRepository;
     private DoorRepository doorRepository;
 
-
     @Autowired
     public GoService(RoomRepository roomRepository, DoorRepository doorRepository) {
         this.roomRepository = roomRepository;
         this.doorRepository = doorRepository;
     }
-
 
     public Session execute(Session session, String subject) {
         if (!Direction.isDirection(subject)) {
@@ -76,7 +74,7 @@ public class GoService implements ActionService {
             session.getPlayer().setDirectionFacing(cardinalDirection);
             session.setRoom(nextRoom);
             session.setDialog("You go that way");
-            session.setScenario(String.format("You are in room %s, %s", nextRoom.getRow(), nextRoom.getCol()));
+            session.setScenario(session.roomDescriptionWithItems());
         } else {
             session.setDialog("You cannot go that way");
         }

@@ -1,6 +1,8 @@
 package chooseadventure.data.entity;
 
+import chooseadventure.data.model.command.CardinalDirection;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Null;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -28,9 +33,16 @@ public class Room {
     @Column
     private int col;
 
+    @Column
+    private String description;
+
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "room_id")
     private Set<Door> doors;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "room_id")
+    private List<Item> items;
 
     public Room(){}
 
@@ -49,6 +61,14 @@ public class Room {
 
     public int getRow() {
         return row;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Set<Door> getDoors() {
@@ -71,10 +91,20 @@ public class Room {
         this.doors = doors;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
+
     public Room toResource() {
         Room room = new Room();
         room.setDoors(doors.stream().map(Door::toResource).collect(Collectors.toSet()));
 
         return room;
     }
+
+    public Optional<Item> findItem(String itemName) {
+        return items.stream()
+                .filter(i -> i.getName().equalsIgnoreCase(itemName))
+                .findFirst();
+        }
 }
