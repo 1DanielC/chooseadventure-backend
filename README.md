@@ -1,6 +1,6 @@
-#ChooseAdventure BE
+# ChooseAdventure BE
 
-###Requirements
+### Requirements
 - Postgres (https://hub.docker.com/_/postgres) 
 ```sh
     $ docker run --name yourName -e POSTGRES_PASSWORD=yourPassword -p 5432:5432 -d postgres:yourVersion
